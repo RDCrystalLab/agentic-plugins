@@ -1,0 +1,6 @@
+.env
+.devpod-internal*
+logs**
+__pycache__/
+*.py[cod]
+*$py.class

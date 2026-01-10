@@ -1,0 +1,34 @@
+{
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/tailscale/codespace/tailscale": {}
+  },
+  "runArgs": [
+    "--env-file", "${localWorkspaceFolder}/.env",
+    "--device=/dev/net/tun",
+    "--device=/dev/snd"
+  ],
+  "initializeCommand": "bash .devcontainer/init-env.sh",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start-services.sh",
+  "containerEnv": {
+		"DISPLAY": ""
+	},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-containers",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "EditorConfig.EditorConfig",
+        "mhutchie.git-graph"
+      ],
+      "settings": {
+      }
+    }
+  }
+}
