@@ -1,0 +1,10 @@
+{
+  "name": "example-skills",
+  "version": "1.0.0",
+  "description": "A collection of example skills for Claude Code marketplace",
+  "author": "Example Author",
+  "repository": "https://github.com/example/skills",
+  "skills": [
+    "skills/hello-world"
+  ]
+}
