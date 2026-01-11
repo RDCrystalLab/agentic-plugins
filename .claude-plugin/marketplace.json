@@ -25,6 +25,17 @@
       },
       "source": "./plugins/damage-control",
       "category": "security"
+    },
+    {
+      "name": "drawio",
+      "description": "建立和編輯 draw.io 圖表 - 流程圖、架構圖、序列圖等視覺化圖表生成",
+      "version": "2.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/drawio",
+      "category": "visualization"
     }
   ]
 }
