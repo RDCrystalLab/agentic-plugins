@@ -1,17 +1,30 @@
 {
-  "name": "example-skills",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agentic-plugins",
+  "version": "1.0.0",
+  "description": "Claude Code 插件集合，包含範例技能和損害控制安全系統",
   "owner": {
-    "name": "Example Author",
-    "email": "author@example.com"
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
   },
   "plugins": [
     {
       "name": "hello-world",
       "description": "A simple example skill that greets users and demonstrates basic skill functionality",
       "version": "1.0.0",
-      "category": "example",
-      "source": "./",
-      "skills": ["./skills/hello-world"]
+      "source": "./plugins/hello-world",
+      "category": "example"
+    },
+    {
+      "name": "damage-control",
+      "description": "損害控制安全系統 - 透過 PreToolUse 鉤子封鎖危險指令並保護敏感檔案",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/damage-control",
+      "category": "security"
     }
   ]
 }
