@@ -1,0 +1,12 @@
+{
+  "name": "drawio",
+  "version": "1.0.0",
+  "description": "從文字規格產生可匯入的 draw.io (diagrams.net) .drawio XML 圖表",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/ricky1698/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["drawio", "draw.io", "diagrams.net", "diagram", "architecture", "flowchart"]
+}
