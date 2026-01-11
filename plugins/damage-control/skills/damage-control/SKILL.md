@@ -1,6 +1,7 @@
 ---
 name: Damage Control
-description: 安裝、設定及管理 Claude Code 損害控制 (Damage Control) 安全鉤子 (hooks) 系統。當使用者提到 damage control、安全鉤子 (security hooks)、受保護路徑 (protected paths)、封鎖指令 (blocked commands)、安裝安全功能 (install security) 或修改保護設定時使用。
+version: 1.0.0
+description: This skill should be used when the user asks to "install damage control", "setup security hooks", "deploy damage control", "add protection", "block dangerous commands", "protect sensitive files", "test damage control", "verify hooks", "安裝 damage control", "設定安全鉤子", "部署損害控制", "新增保護", "封鎖危險指令", "保護敏感檔案", "測試 damage control", "驗證鉤子", or mentions damage control, security hooks (安全鉤子), protected paths (受保護路徑), blocked commands (封鎖指令), zero access paths (零存取路徑), read only paths (唯讀路徑), install security (安裝安全功能), modify protection (修改保護設定).
 ---
 
 # 損害控制技能 (Damage Control Skill)
