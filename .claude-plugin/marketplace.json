@@ -17,7 +17,7 @@
     },
     {
       "name": "drawio",
-      "description": "Generate draw.io (diagrams.net) diagrams as importable .drawio XML from a text spec",
+      "description": "從文字規格產生可匯入的 draw.io (diagrams.net) .drawio XML 圖表",
       "version": "1.0.0",
       "source": "./plugins/drawio",
       "category": "productivity"
