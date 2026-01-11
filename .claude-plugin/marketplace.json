@@ -16,6 +16,13 @@
       "category": "example"
     },
     {
+      "name": "drawio",
+      "description": "Generate draw.io (diagrams.net) diagrams as importable .drawio XML from a text spec",
+      "version": "1.0.0",
+      "source": "./plugins/drawio",
+      "category": "productivity"
+    },
+    {
       "name": "damage-control",
       "description": "損害控制安全系統 - 透過 PreToolUse 鉤子封鎖危險指令並保護敏感檔案",
       "version": "1.0.0",
