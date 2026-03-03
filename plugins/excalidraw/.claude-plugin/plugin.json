@@ -1,0 +1,12 @@
+{
+  "name": "excalidraw",
+  "version": "1.0.0",
+  "description": "使用 Excalidraw JSON 格式建立手繪風格圖表。產生架構圖、流程圖等視覺化圖表，並支援 PNG 匯出。",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/ricky1698/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["excalidraw", "diagram", "flowchart", "architecture", "json", "visualization", "hand-drawn"]
+}

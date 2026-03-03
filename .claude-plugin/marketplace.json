@@ -36,6 +36,17 @@
       },
       "source": "./plugins/drawio",
       "category": "visualization"
+    },
+    {
+      "name": "excalidraw",
+      "description": "建立手繪風格 Excalidraw 圖表 - 架構圖、流程圖等視覺化圖表生成，支援 PNG 匯出",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/excalidraw",
+      "category": "visualization"
     }
   ]
 }
