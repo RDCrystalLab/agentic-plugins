@@ -1,0 +1,12 @@
+{
+  "name": "playwright-cli",
+  "version": "1.0.0",
+  "description": "Browser automation with playwright-cli for web testing, form filling, screenshots, and data extraction",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/ricky1698/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["playwright", "browser", "automation", "testing", "web", "screenshot"]
+}

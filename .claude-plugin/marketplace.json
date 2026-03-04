@@ -47,6 +47,17 @@
       },
       "source": "./plugins/excalidraw",
       "category": "visualization"
+    },
+    {
+      "name": "playwright-cli",
+      "description": "Browser automation with playwright-cli for web testing, form filling, screenshots, and data extraction",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/playwright-cli",
+      "category": "automation"
     }
   ]
 }
