@@ -58,6 +58,17 @@
       },
       "source": "./plugins/playwright-cli",
       "category": "automation"
+    },
+    {
+      "name": "gh-tools",
+      "description": "GitHub workflow commands for issues, PRs, and project management using the gh CLI",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/gh-tools",
+      "category": "development"
     }
   ]
 }
