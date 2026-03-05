@@ -69,6 +69,17 @@
       },
       "source": "./plugins/gh-tools",
       "category": "development"
+    },
+    {
+      "name": "tmux-fork",
+      "description": "Fork new tmux windows to spawn parallel AI agents or run CLI commands",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/tmux-fork",
+      "category": "automation"
     }
   ]
 }
