@@ -4,10 +4,10 @@
 
 ## Variables
 
-DEFAULT_MODEL: gpt-5.1-codex-max
-HEAVY_MODEL: gpt-5.1-codex-max
-BASE_MODEL: gpt-5.1-codex-max
-FAST_MODEL: gpt-5.1-codex-mini
+DEFAULT_MODEL: gpt-5.3-codex
+HEAVY_MODEL: gpt-5.3-codex
+BASE_MODEL: gpt-5.3-codex
+FAST_MODEL: gpt-5.3-codex-spark
 
 ## Instructions
 
