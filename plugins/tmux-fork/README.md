@@ -20,7 +20,7 @@ Based on [disler/fork-repository-skill](https://github.com/disler/fork-repositor
 | Tool | Trigger Examples | Default Model |
 |------|-----------------|---------------|
 | **Claude Code** | "fork terminal use claude code to..." | `opus` |
-| **Codex CLI** | "fork terminal use codex to..." | `gpt-5.1-codex-max` |
+| **Codex CLI** | "fork terminal use codex to..." | `gpt-5.3-codex` |
 | **Gemini CLI** | "fork terminal use gemini to..." | `gemini-3-pro-preview` |
 | **Raw CLI** | "fork terminal run npm run dev" | N/A |
 

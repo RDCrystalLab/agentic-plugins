@@ -40,7 +40,7 @@
     {
       "name": "excalidraw",
       "description": "建立手繪風格 Excalidraw 圖表 - 架構圖、流程圖等視覺化圖表生成，支援 PNG 匯出",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Ricky",
         "email": "moiamond@gmail.com"
@@ -73,7 +73,7 @@
     {
       "name": "tmux-fork",
       "description": "Fork new tmux windows to spawn parallel AI agents or run CLI commands",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Ricky",
         "email": "moiamond@gmail.com"
