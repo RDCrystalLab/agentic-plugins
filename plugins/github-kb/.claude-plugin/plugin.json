@@ -1,0 +1,12 @@
+{
+  "name": "github-kb",
+  "version": "1.0.0",
+  "description": "GitHub 本地知識庫管理員。維護 ~/workspaces/github 本地 repo 索引，支援 clone、查詢，並透過 gh CLI 搜尋 issue、PR 與 repository。",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/ricky1698/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["github", "git", "repository", "clone", "gh", "issue", "pr", "knowledge-base"]
+}

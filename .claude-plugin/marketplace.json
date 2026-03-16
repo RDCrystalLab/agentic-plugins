@@ -38,6 +38,17 @@
       "category": "visualization"
     },
     {
+      "name": "github-kb",
+      "description": "GitHub 本地知識庫管理員。維護 ~/workspaces/github 本地 repo 索引，支援 clone、查詢，並透過 gh CLI 搜尋 issue、PR 與 repository。",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/github-kb",
+      "category": "productivity"
+    },
+    {
       "name": "excalidraw",
       "description": "建立手繪風格 Excalidraw 圖表 - 架構圖、流程圖等視覺化圖表生成，支援 PNG 匯出",
       "version": "1.1.0",
