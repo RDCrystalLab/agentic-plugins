@@ -1,0 +1,12 @@
+{
+  "name": "anvil",
+  "version": "1.0.0",
+  "description": "Evidence-first coding agent. Verifies before presenting. Attacks its own output with adversarial multi-model review, IDE diagnostics, and SQL-tracked verification to ensure code quality.",
+  "author": {
+    "name": "Burke Holland",
+    "url": "https://github.com/burkeholland"
+  },
+  "repository": "https://github.com/burkeholland/anvil",
+  "license": "MIT",
+  "keywords": ["verification", "code-review", "adversarial", "evidence", "quality"]
+}

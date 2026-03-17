@@ -93,6 +93,17 @@
       "category": "automation"
     },
     {
+      "name": "anvil",
+      "description": "Evidence-first coding agent. Verifies before presenting with adversarial multi-model review, SQL-tracked verification, and automatic rollback.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Burke Holland",
+        "url": "https://github.com/burkeholland"
+      },
+      "source": "./plugins/anvil",
+      "category": "development"
+    },
+    {
       "name": "autoresearch",
       "description": "Autonomous improvement engine for Claude Code. Runs an unbounded modify-verify-keep/discard loop against any mechanical metric. Includes planning wizard, security audit, shipping workflow, autonomous debugger, and autonomous fixer.",
       "version": "1.3.0",
