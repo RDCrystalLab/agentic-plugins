@@ -6,6 +6,20 @@ This file provides guidance for agentic coding agents working in this repository
 
 This is a Claude Code plugins marketplace containing multiple plugins, each in its own directory under `plugins/`. The repository uses a marketplace structure where plugins can be installed individually or as a collection.
 
+## Plugins
+
+| Name | Category | Components |
+|------|----------|------------|
+| damage-control | security | skills, hooks |
+| drawio | visualization | skills |
+| excalidraw | visualization | skills |
+| github-kb | productivity | skills |
+| playwright-cli | automation | skills |
+| tmux-fork | automation | skills, commands |
+| gh-tools | development | commands, skills |
+| anvil | development | agents |
+| autoresearch | productivity | skills, commands |
+
 ## Build/Lint/Test Commands
 
 ### Python/UV Environment (Damage Control Plugin)
@@ -39,7 +53,7 @@ uv run test-damage-control.py bash Bash "ls -la" --expect-allowed
 uv run test-damage-control.py write Write "/tmp/test.txt" --expect-allowed
 uv run test-damage-control.py edit Edit "./README.md" --expect-allowed
 
-# TypeScript - Test specific hook types  
+# TypeScript - Test specific hook types
 bun run test-damage-control.ts bash Bash "git status" --expect-allowed
 bun run test-damage-control.ts write Write "package.json" --expect-allowed
 bun run test-damage-control.ts edit Edit "src/index.ts" --expect-allowed
@@ -48,8 +62,10 @@ bun run test-damage-control.ts edit Edit "src/index.ts" --expect-allowed
 ## Code Style Guidelines
 
 ### File Structure and Naming
-- **Plugin directories**: Use kebab-case (`hello-world`, `damage-control`)
-- **Skill files**: Use `SKILL.md` with YAML frontmatter
+- **Plugin directories**: Use kebab-case (`damage-control`, `gh-tools`)
+- **Agent files**: Use kebab-case `.md` files in `agents/` directory
+- **Skill files**: Use `SKILL.md` with YAML frontmatter in named subdirectories under `skills/`
+- **Command files**: Use kebab-case `.md` files in `commands/` directory
 - **Hook implementations**: Use descriptive names with tool prefixes (`bash-tool-damage-control.py`)
 - **Configuration files**: Use JSON for settings, YAML for patterns
 
@@ -59,6 +75,15 @@ All skill files must include YAML frontmatter:
 ---
 name: skill-name
 description: Brief description of when to use this skill
+---
+```
+
+### YAML Frontmatter (Agents)
+All agent files must include YAML frontmatter:
+```yaml
+---
+name: agent-name
+description: When to use this agent and what it does
 ---
 ```
 
@@ -106,7 +131,7 @@ For "ask" patterns, use this specific structure:
 ```json
 {
   "hookSpecificOutput": {
-    "hookEventName": "PreToolUse", 
+    "hookEventName": "PreToolUse",
     "permissionDecision": "ask",
     "permissionDecisionReason": "Brief explanation"
   }
@@ -114,7 +139,8 @@ For "ask" patterns, use this specific structure:
 ```
 
 ### Documentation Style
-- **README files**: Use Traditional Chinese for main repository, English for plugin examples
+- **README files**: Use Traditional Chinese for main repository and plugin READMEs
+- **Agent/Skill content**: Use Traditional Chinese for user-facing instructions
 - **Code comments**: Be concise, focus on security implications
 - **Skill instructions**: Use clear trigger phrases and response patterns
 
@@ -128,6 +154,7 @@ For "ask" patterns, use this specific structure:
 - **Plugin metadata**: Include in `.claude-plugin/plugin.json`
 - **Marketplace registration**: Add to `.claude-plugin/marketplace.json`
 - **Skill triggers**: Use clear, specific trigger phrases
+- **Agent triggers**: Use descriptive `description` field with concrete examples
 - **Component structure**: Follow standard directories (`commands/`, `agents/`, `skills/`, `hooks/`)
 
 ### Security Considerations
@@ -138,7 +165,8 @@ For "ask" patterns, use this specific structure:
 
 ## Environment Variables
 - `$CLAUDE_PROJECT_DIR`: Root directory of the current project
-- Hook scripts should use this for resolving relative paths
+- `$CLAUDE_PLUGIN_ROOT`: Root directory of the current plugin (use for intra-plugin path references)
+- Hook scripts should use these for resolving relative paths
 
 ## File Permissions
 - Hook scripts must be executable (`chmod +x`)
@@ -151,7 +179,9 @@ agentic-plugins/
 ├── .claude-plugin/marketplace.json    # Registry of all plugins
 ├── plugins/
 │   ├── plugin-name/.claude-plugin/plugin.json
+│   ├── plugin-name/agents/agent-name.md      # For agent plugins
 │   ├── plugin-name/skills/skill-name/SKILL.md
+│   ├── plugin-name/commands/command-name.md
 │   └── plugin-name/README.md
 └── README.md
 ```
