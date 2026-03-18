@@ -1,0 +1,12 @@
+{
+  "name": "agency-agents",
+  "version": "1.0.0",
+  "description": "數位行銷代理商專用 Agent 集合，涵蓋工程、設計、行銷、銷售、測試等 14 個專業類別，共超過 140 個專業 Agent。",
+  "author": {
+    "name": "msitarzewski",
+    "url": "https://github.com/msitarzewski"
+  },
+  "repository": "https://github.com/msitarzewski/agency-agents",
+  "license": "MIT",
+  "keywords": ["agency", "marketing", "engineering", "design", "sales", "testing", "product", "agents"]
+}
