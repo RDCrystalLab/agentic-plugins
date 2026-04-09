@@ -1,0 +1,13 @@
+{
+  "name": "openrouter-image-gen",
+  "version": "1.0.0",
+  "description": "透過 OpenRouter API 生成圖片，支援 Flux、Gemini、GPT-5 Image 等多種模型。需要 OPENROUTER_API_KEY 環境變數。",
+  "author": {
+    "name": "Burke Holland",
+    "url": "https://github.com/burkeholland/openrouter-image-gen-skill"
+  },
+  "repository": "https://github.com/burkeholland/openrouter-image-gen-skill",
+  "license": "MIT",
+  "keywords": ["image-generation", "openrouter", "flux", "gemini", "gpt-5-image", "ai-image"],
+  "skills": "./skills/"
+}

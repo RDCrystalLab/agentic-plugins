@@ -1,0 +1,13 @@
+{
+  "name": "tutor-skills",
+  "version": "1.0.0",
+  "description": "將任何知識來源轉化為 Obsidian StudyVault，並透過互動式測驗追蹤學習進度。包含 tutor-setup（生成 StudyVault）和 tutor（概念級測驗輔導）兩個技能。",
+  "author": {
+    "name": "RoundTable02",
+    "url": "https://github.com/RoundTable02/tutor-skills"
+  },
+  "repository": "https://github.com/RoundTable02/tutor-skills",
+  "license": "MIT",
+  "keywords": ["obsidian", "study", "quiz", "learning", "tutor", "vault", "education"],
+  "skills": "./skills/"
+}

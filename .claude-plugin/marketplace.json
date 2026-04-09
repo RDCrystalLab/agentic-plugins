@@ -106,6 +106,28 @@
       },
       "source": "./plugins/autoresearch",
       "category": "productivity"
+    },
+    {
+      "name": "tutor-skills",
+      "description": "將任何知識來源轉化為 Obsidian StudyVault，並透過互動式測驗追蹤學習進度。包含 tutor-setup（生成 StudyVault）和 tutor（概念級測驗輔導）兩個技能。",
+      "version": "1.0.0",
+      "author": {
+        "name": "RoundTable02",
+        "url": "https://github.com/RoundTable02/tutor-skills"
+      },
+      "source": "./plugins/tutor-skills",
+      "category": "productivity"
+    },
+    {
+      "name": "openrouter-image-gen",
+      "description": "透過 OpenRouter API 生成圖片，支援 Flux、Gemini、GPT-5 Image 等多種模型。需要 OPENROUTER_API_KEY 環境變數。",
+      "version": "1.0.0",
+      "author": {
+        "name": "Burke Holland",
+        "url": "https://github.com/burkeholland/openrouter-image-gen-skill"
+      },
+      "source": "./plugins/openrouter-image-gen",
+      "category": "visualization"
     }
   ]
 }
