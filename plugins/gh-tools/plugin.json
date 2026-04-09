@@ -1,0 +1,13 @@
+{
+  "name": "gh-tools",
+  "version": "1.0.0",
+  "description": "GitHub workflow commands for issues, PRs, and project management using the gh CLI",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/ricky1698/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["github", "gh", "issues", "pull-requests", "workflow"],
+  "commands": "./commands/"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "drawio",
+  "version": "2.0.0",
+  "description": "使用 draw.io 建立和編輯 XML 格式的圖表。透過智慧邊緣路由與佈局最佳化，產生流程圖、架構圖、序列圖等。",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/ricky1698/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["draw.io", "diagram", "flowchart", "architecture", "xml", "visualization"],
+  "skills": "./skills/"
+}
