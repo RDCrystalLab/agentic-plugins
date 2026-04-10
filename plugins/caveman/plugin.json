@@ -1,0 +1,14 @@
+{
+  "name": "caveman",
+  "version": "1.0.0",
+  "description": "Ultra-compressed communication mode. Cuts ~75% of tokens while keeping full technical accuracy by speaking like a caveman.",
+  "author": {
+    "name": "Julius Brussee",
+    "url": "https://github.com/JuliusBrussee"
+  },
+  "repository": "https://github.com/JuliusBrussee/caveman",
+  "license": "MIT",
+  "keywords": ["caveman", "compression", "tokens", "terse", "brevity", "wenyan"],
+  "skills": "./skills/",
+  "hooks": "./hooks/"
+}

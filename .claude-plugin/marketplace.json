@@ -128,6 +128,17 @@
       },
       "source": "./plugins/openrouter-image-gen",
       "category": "visualization"
+    },
+    {
+      "name": "caveman",
+      "description": "極致壓縮溝通模式，削減約 75% 輸出 token 同時保持完整技術準確性。含 caveman/commit/review 技能、compress 工具及 hooks。",
+      "version": "1.0.0",
+      "author": {
+        "name": "Julius Brussee",
+        "url": "https://github.com/JuliusBrussee"
+      },
+      "source": "./plugins/caveman",
+      "category": "productivity"
     }
   ]
 }

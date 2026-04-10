@@ -19,6 +19,9 @@ This is a Claude Code plugins marketplace containing multiple plugins, each in i
 | gh-tools | development | commands, skills |
 | anvil | development | agents |
 | autoresearch | productivity | skills, commands |
+| tutor-skills | productivity | skills |
+| openrouter-image-gen | visualization | skills |
+| caveman | productivity | skills, hooks |
 
 ## Build/Lint/Test Commands
 
