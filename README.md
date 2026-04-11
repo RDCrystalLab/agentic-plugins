@@ -19,6 +19,7 @@
 | [openrouter-image-gen](./plugins/openrouter-image-gen/) | 透過 OpenRouter API 生成圖片，支援 Flux、Gemini、GPT-5 Image 等模型 | visualization |
 | [caveman](./plugins/caveman/) | 極致壓縮溝通模式，削減約 75% 輸出 token，支援文言文模式 | productivity |
 | [cli-creator](./plugins/cli-creator/) | 從 API 文件或現有腳本建立可組合的 CLI 工具，偏好 uv single-file | development |
+| [marimo](./plugins/marimo/) | marimo reactive notebook 全方位技能包（11 個技能：撰寫、配對、轉換、論文實作等） | development |
 
 ## 安裝
 

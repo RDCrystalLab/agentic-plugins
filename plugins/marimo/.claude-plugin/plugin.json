@@ -1,0 +1,12 @@
+{
+  "name": "marimo",
+  "version": "1.0.0",
+  "description": "marimo reactive notebook 全方位技能包 — 撰寫 notebook、即時配對程式設計、轉換 Jupyter/Streamlit、論文實作、anywidget、WASM 相容性檢查等 11 個技能。",
+  "author": {
+    "name": "marimo-team",
+    "url": "https://github.com/marimo-team"
+  },
+  "repository": "https://github.com/marimo-team",
+  "license": "MIT",
+  "keywords": ["marimo", "notebook", "python", "reactive", "jupyter", "anywidget", "data-science"]
+}

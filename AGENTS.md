@@ -23,6 +23,7 @@ This is a Claude Code plugins marketplace containing multiple plugins, each in i
 | openrouter-image-gen | visualization | skills |
 | caveman | productivity | skills, hooks |
 | cli-creator | development | skills |
+| marimo | development | skills |
 
 ## Build/Lint/Test Commands
 
