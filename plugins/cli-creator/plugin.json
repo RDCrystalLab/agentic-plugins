@@ -1,0 +1,12 @@
+{
+  "name": "cli-creator",
+  "version": "1.0.0",
+  "description": "從 API 文件、OpenAPI spec、curl 範例或現有腳本建立可組合的 CLI 工具。支援 Python (uv single-file)、Rust、TypeScript，含 companion skill 自動生成。",
+  "author": {
+    "name": "OpenAI",
+    "url": "https://github.com/openai/codex"
+  },
+  "license": "MIT",
+  "keywords": ["cli", "tool-builder", "api", "openapi", "composable", "uv"],
+  "skills": "./skills/"
+}

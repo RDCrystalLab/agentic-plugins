@@ -139,6 +139,17 @@
       },
       "source": "./plugins/caveman",
       "category": "productivity"
+    },
+    {
+      "name": "cli-creator",
+      "description": "從 API 文件、OpenAPI spec、curl 範例或現有腳本建立可組合的 CLI 工具。支援 Python (uv single-file)、Rust、TypeScript，含 companion skill 自動生成。",
+      "version": "1.0.0",
+      "author": {
+        "name": "OpenAI",
+        "url": "https://github.com/openai/codex"
+      },
+      "source": "./plugins/cli-creator",
+      "category": "development"
     }
   ]
 }

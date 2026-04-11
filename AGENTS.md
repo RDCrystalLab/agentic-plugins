@@ -22,6 +22,7 @@ This is a Claude Code plugins marketplace containing multiple plugins, each in i
 | tutor-skills | productivity | skills |
 | openrouter-image-gen | visualization | skills |
 | caveman | productivity | skills, hooks |
+| cli-creator | development | skills |
 
 ## Build/Lint/Test Commands
 
