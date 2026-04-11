@@ -24,6 +24,7 @@ This is a Claude Code plugins marketplace containing multiple plugins, each in i
 | caveman | productivity | skills, hooks |
 | cli-creator | development | skills |
 | marimo | development | skills |
+| prd | productivity | skills |
 
 ## Build/Lint/Test Commands
 

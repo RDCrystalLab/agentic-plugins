@@ -161,6 +161,17 @@
       },
       "source": "./plugins/marimo",
       "category": "development"
+    },
+    {
+      "name": "prd",
+      "description": "PRD 全流程工具 — 從用戶訪談建立 PRD，再拆成實作計畫或 GitHub issues。含 write-a-prd、prd-to-plan、prd-to-issues 三個技能。",
+      "version": "1.0.0",
+      "author": {
+        "name": "Matt Pocock",
+        "url": "https://github.com/mattpocock/skills"
+      },
+      "source": "./plugins/prd",
+      "category": "productivity"
     }
   ]
 }
