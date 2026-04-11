@@ -1,0 +1,12 @@
+{
+  "name": "skill-scout",
+  "version": "1.0.0",
+  "description": "從外部 repo 發現、評估、移植 skills 到插件市集。支援瀏覽、討論篩選、合併相關 skills、雙格式 plugin.json 產出。",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/RDCrystalLab/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["skill", "scout", "import", "port", "migrate", "marketplace", "plugin"]
+}

@@ -172,6 +172,17 @@
       },
       "source": "./plugins/prd",
       "category": "productivity"
+    },
+    {
+      "name": "skill-scout",
+      "description": "從外部 repo 發現、評估、移植 skills 到插件市集。支援瀏覽、討論篩選、合併相關 skills、雙格式 plugin.json 產出。",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/skill-scout",
+      "category": "productivity"
     }
   ]
 }
