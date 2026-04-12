@@ -205,6 +205,17 @@
       },
       "source": "./plugins/karpathy-llm-wiki",
       "category": "productivity"
+    },
+    {
+      "name": "obsidian-para-wiki",
+      "description": "在 PARA 結構的 Obsidian vault 中建立並維護個人 LLM 知識庫。Resources/llm-wiki/raw/ 存原始材料，Resources/llm-wiki/wiki/ 存編譯後文章，全程使用 Obsidian wikilink（與 Quartz shortest 模式相容）。支援從 0-inbox/ 擷取素材、寫入 daily note 的 Logs 區。Ingest、Query、Lint 三大操作。觸發詞：加入知識庫、匯入到 wiki、我對 X 知道什麼、查詢知識庫、檢查 wiki、PARA wiki、obsidian wiki。",
+      "version": "0.1.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/obsidian-para-wiki",
+      "category": "productivity"
     }
   ]
 }
