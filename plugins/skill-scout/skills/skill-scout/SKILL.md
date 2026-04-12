@@ -5,6 +5,9 @@ description: >
   Use when the user says "read this repo", "browse these skills", "port this over",
   "add this skill", mentions a ~/workspaces/ path, a GitHub skills repo URL,
   or wants to evaluate whether external skills are worth importing.
+  中文觸發詞：『讀這個 repo』、『看一下 ~/workspaces/xxx』、『瀏覽這些 skills』、
+  『移植這個 skill』、『把這個 porting 過來』、『把這個加進 repo』、『評估這個 repo』、
+  『這個 repo 有什麼 skill』、『從 GitHub 匯入 skill』等。
 ---
 
 # Skill Scout — Discover, Evaluate, and Port Skills
@@ -109,6 +112,13 @@ plugins/<plugin-name>/
 - **Python preference** — if the source uses `python3` or `pip install`, prefer `uv run` / `uv single-file` patterns where appropriate
 - **README in 繁體中文** — write the README in Traditional Chinese, noting the original author and source
 - **Preserve original author attribution** — always credit the original author in plugin.json and README
+- **Bilingual trigger words** — the skill's description field must include BOTH English and Traditional Chinese trigger phrases, because the target user works in Chinese. Extract the core actions (what the skill does), then write natural Chinese phrases a user would actually say. For each English trigger, add a Chinese equivalent. Update all four places where the description appears:
+  1. `SKILL.md` frontmatter `description` field
+  2. `plugins/<name>/plugin.json` description
+  3. `plugins/<name>/.claude-plugin/plugin.json` description
+  4. `.claude-plugin/marketplace.json` plugin entry description
+  
+  Example: for a PDF extraction skill, add `中文觸發詞：『從 PDF 提取』、『解析 PDF』、『PDF 轉文字』等。` after the English triggers.
 
 ### 3d. Register
 

@@ -1,7 +1,7 @@
 {
   "name": "skill-scout",
   "version": "1.0.0",
-  "description": "從外部 repo 發現、評估、移植 skills 到插件市集。支援瀏覽、討論篩選、合併相關 skills、雙格式 plugin.json 產出。",
+  "description": "從外部 repo 發現、評估、移植 skills 到插件市集。支援瀏覽、討論篩選、合併相關 skills、雙格式 plugin.json 產出。觸發詞：讀這個 repo、看一下 ~/workspaces、瀏覽 skills、移植這個 skill、把這個 porting 過來、評估這個 repo、從 GitHub 匯入 skill；read this repo, browse skills, port this skill, add this skill.",
   "author": {
     "name": "Ricky",
     "email": "moiamond@gmail.com"
