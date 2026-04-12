@@ -22,6 +22,7 @@
 | [marimo](./plugins/marimo/) | marimo reactive notebook 全方位技能包（11 個技能：撰寫、配對、轉換、論文實作等） | development |
 | [prd](./plugins/prd/) | PRD 全流程（write-a-prd → prd-to-plan → prd-to-issues） | productivity |
 | [skill-scout](./plugins/skill-scout/) | 從外部 repo 發現、評估、移植 skills 到插件市集 | productivity |
+| [karpathy-llm-wiki](./plugins/karpathy-llm-wiki/) | 建立並維護個人 LLM 知識庫（raw/ + wiki/ + ingest/query/lint） | productivity |
 
 ## 安裝
 

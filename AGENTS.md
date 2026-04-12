@@ -26,6 +26,7 @@ This is a Claude Code plugins marketplace containing multiple plugins, each in i
 | marimo | development | skills |
 | prd | productivity | skills |
 | skill-scout | productivity | skills |
+| karpathy-llm-wiki | productivity | skills |
 
 ## Build/Lint/Test Commands
 
