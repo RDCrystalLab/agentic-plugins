@@ -1,0 +1,12 @@
+{
+  "name": "debug-hypothesis",
+  "version": "1.0.0",
+  "description": "假設驅動除錯法 — 強制 agent 走 Observe → Hypothesize → Experiment → Conclude 四階段科學方法迴圈，所有推理寫進 DEBUG.md，沒有證據前不准寫 fix。專治 AI 一路撞牆寫 150 行錯誤修復的 bulldozer 失敗模式。中文觸發詞：『這個 bug 怎麼修』、『一直修不好』、『科學方法除錯』、『debug 卡住了』。",
+  "author": {
+    "name": "LichAmnesia",
+    "url": "https://github.com/LichAmnesia/lich-skills"
+  },
+  "repository": "https://github.com/LichAmnesia/lich-skills",
+  "license": "MIT",
+  "keywords": ["debugging", "hypothesis", "scientific-method", "root-cause", "anti-bulldozer", "debug-md"]
+}

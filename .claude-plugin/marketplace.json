@@ -196,17 +196,6 @@
       "category": "productivity"
     },
     {
-      "name": "karpathy-llm-wiki",
-      "description": "建立並維護個人 LLM 知識庫。raw/ 存原始材料（不可變），wiki/ 存編譯後的文章（LLM 維護）。支援 Ingest、Query、Lint 三大操作，隨時間累積。觸發詞：加入知識庫、匯入到 wiki、我對 X 知道什麼、查詢知識庫、整理知識庫、檢查 wiki、個人知識庫、LLM wiki、Karpathy wiki。",
-      "version": "1.0.0",
-      "author": {
-        "name": "Astro-Han",
-        "url": "https://github.com/Astro-Han/karpathy-llm-wiki"
-      },
-      "source": "./plugins/karpathy-llm-wiki",
-      "category": "productivity"
-    },
-    {
       "name": "obsidian-para-wiki",
       "description": "在 PARA 結構的 Obsidian vault 中建立並維護個人 LLM 知識庫。Resources/llm-wiki/raw/ 存原始材料，Resources/llm-wiki/wiki/ 存編譯後文章，全程使用 Obsidian wikilink（與 Quartz shortest 模式相容）。支援從 0-inbox/ 擷取素材、寫入 daily note 的 Logs 區。Ingest、Query、Lint 三大操作。觸發詞：加入知識庫、匯入到 wiki、我對 X 知道什麼、查詢知識庫、檢查 wiki、PARA wiki、obsidian wiki。",
       "version": "0.1.0",
@@ -216,6 +205,17 @@
       },
       "source": "./plugins/obsidian-para-wiki",
       "category": "productivity"
+    },
+    {
+      "name": "debug-hypothesis",
+      "description": "假設驅動除錯法 — 強制 agent 走 Observe → Hypothesize → Experiment → Conclude 四階段科學方法迴圈，所有推理寫進 DEBUG.md，沒有證據前不准寫 fix。專治 AI 一路撞牆寫 150 行錯誤修復的 bulldozer 失敗模式。中文觸發詞：『這個 bug 怎麼修』、『一直修不好』、『科學方法除錯』、『debug 卡住了』。",
+      "version": "1.0.0",
+      "author": {
+        "name": "LichAmnesia",
+        "url": "https://github.com/LichAmnesia/lich-skills"
+      },
+      "source": "./plugins/debug-hypothesis",
+      "category": "development"
     }
   ]
 }
