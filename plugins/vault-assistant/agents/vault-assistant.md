@@ -75,6 +75,7 @@ For every vault action, first check whether a slash command exists. Slash comman
 | `/gh-daily-log` | Query GitHub activity for today and append to daily note Logs |
 | `/repo-patrol` | Patrol `Areas/development/research-repos/` for upstream changes |
 | `/watch-repo` | Add a GitHub repo to the research-repos monitoring list |
+| `github-query` (skill) | Vault-first GitHub Q&A — reads research-repos notes before falling back to local clones / `gh` CLI |
 | `/gh-contribution-report` | Generate monthly / annual contribution report from GitHub |
 | `/gh-issues-to-doc` | Turn GitHub issues into structured Obsidian notes |
 

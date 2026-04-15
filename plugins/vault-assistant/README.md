@@ -31,11 +31,12 @@
 | `/vault-assistant:repo-patrol` | 巡檢 `Areas/development/research-repos/` 的 upstream 變化 |
 | `/vault-assistant:watch-repo` | 加 GitHub repo 進 research-repos monitoring list |
 
-### Skills（3）
+### Skills（4）
 
 - **`new-project`** — 在 vault 新增專案、更新 `Projects/index.md`
 - **`gh-contribution-report`** — 從 GitHub org 抓 commits / PRs 生成月報與年報
 - **`gh-issues-to-doc`** — 把 GitHub Issues 轉成結構化 Obsidian 筆記
+- **`github-query`** — vault-first 的 GitHub repo / issue / PR 查詢層，優先讀 research-repos note，未命中才 fallback 到本地 clone 與 `gh` CLI，並在值得追蹤時建議 `/watch-repo` 沉澱
 
 ## 安裝
 
