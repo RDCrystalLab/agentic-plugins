@@ -114,6 +114,77 @@ sb/
 
 ---
 
+## Hub issue workflow（GitHub Issues ↔ Vault）
+
+Vault 把 GitHub Issues 當作「執行單位」，vault notes 作為「比任何單一 issue 活得更久的知識」。這個分工讓 GitHub 管狀態、Vault 管歷史，兩邊都不會淪為對方的廉價複本。
+
+### Issue 放哪：兩層混合
+
+| 工作類型 | Issue 放哪 | 範例 |
+|---|---|---|
+| 有 code 要動 | 該 code repo | `ricky1698/agentic-plugins#42` |
+| 沒 code / 跨 repo / meta | **`ricky1698/sb`（hub repo）** | `ricky1698/sb#17` |
+| 一次性閃念 | ❌ 不開 issue，寫進當日 daily note `# Logs` | — |
+
+**原則**：code 在哪，issue 就在哪。沒 code 的集中到 sb，讓 sb 變成「vault + 跨 repo 計畫 hub」。不要為了統一把所有 issue 塞進 sb——PR 鏈接、CI、release notes 會斷。
+
+### Label schema（固定三軸）
+
+每個 issue 至少 **一個 `project:*`** + **一個 `type:*`** + **一個 horizon（now/next/later）**。三軸齊全才算歸類好。
+
+- **Project**：`project:<slug>` — 對應 `Projects/<slug>/` 目錄名，顏色綠 `#0E8A16`
+- **Type**：`type:task` / `type:bug` / `type:research` / `type:decision` / `type:idea`
+- **Horizon**：`now`（這週）/ `next`（下週）/ `later`（沒排期）
+
+完整 label 清單與 `gh label create` 指令見 `Templates/issue-templates/labels.md`（install 時會放好）。**跨 repo 使用同一套**，這樣 `gh search issues --owner ricky1698 label:project:<slug>` 才能橫跨所有 repo 找事。
+
+### Issue ↔ Vault note 配對規則
+
+**不是每個 issue 都要有 vault note。** 配不配看 type：
+
+| Issue type | 要不要配 vault note | 放哪 |
+|---|---|---|
+| `type:task` | ❌ 不配，直接做，PR 關 issue | — |
+| `type:bug`  | ❌ 不配 | — |
+| `type:research` | ✅ 配 | `Projects/<slug>/<note>.md`（用 `/add-project-note`） |
+| `type:decision` | ✅ 配 | `Projects/<slug>/decisions/<slug>.md` |
+| `type:idea` | ⏸ 先不配，升級成 task/research 再說 | — |
+
+配 note 時**雙向連結**：note frontmatter 加 `issue: <url>`，issue 回一個 comment 指向 note 的相對路徑（Obsidian wikilink GitHub 不認，用 `\`Projects/<slug>/<note>.md\``）。
+
+### 六階段 flow
+
+```
+Capture → Triage → Work → Sync → Close → Report
+```
+
+1. **Capture**（5 秒）— `gh issue create` 或 `/vault-assistant:capture-issue`，打上三軸 label。一次性閃念寫 daily note 就好
+2. **Triage**（每週一早上 3 分鐘）— `gh search issues --owner <you> label:next state:open`，決定升級到 `now`
+3. **Work** — `type:research` / `type:decision` 建對應 vault note 並雙向連結；`type:task` / `type:bug` 直接做
+4. **Sync** — 深度思考寫 vault note，不要寫 issue comment（comment 是 timestamped 記錄，note 是可改寫草稿）；commit message 用 `refs #N`（不 close，只關聯）
+5. **Close** — PR merge 自動 close（`Closes #N`），或 `gh issue close` 手動關。Decision issue 關的時候 comment 一行結論，長篇 rationale 留在 vault note
+6. **Report** — `/end-day`（含 `/gh-daily-log`）→ `/end-week` → `/end-month` 自動把 issue 事件流倒回 vault 時間軸。你不用手動整理
+
+### 日常 cadence
+
+| 頻率 | 動作 |
+|---|---|
+| 每天早上 | `/start-day` — briefing 會帶出今天 `label:now` open issues 數 |
+| 每天晚上 | `/end-day` — 內含 `/gh-daily-log`，把今天 GitHub 活動倒進 daily |
+| 週一早上 | `/plan-weekly` — 盤點 `next` 升級成 `now`，`later` 升級成 `next` |
+| 週五晚上 | `/end-week` — aggregate 本週 daily 進 weekly |
+| 月底 | `/end-month` + `/gh-contribution-report` |
+
+### Anti-patterns
+
+1. **雙寫**：同一內容既在 issue body 又在 vault note → 選一邊當 source of truth，另一邊只放指標
+2. **Issue 長草**：`later` 永遠不動 → 月初花 10 分鐘 `gh search issues label:later sort:updated-asc`，不相關的直接 close
+3. **Label 爆炸**：為每個子功能建 label → 三軸就夠，想要更細用 milestone 或 sub-issues
+4. **把 GitHub 當 Obsidian 用**：長篇 rationale 寫進 issue body/comment → 長文去 vault，issue 只留指標
+5. **回答跨 repo 問題時沒用 `github-query` skill**：vault 裡 research-repos notes 是 first-class knowledge base，查詢應該 vault-first
+
+---
+
 ## Wikilink 規則（Quartz 相容）
 
 本 vault 透過 Quartz 發佈為靜態網站，Quartz 使用 `shortest` link resolution。

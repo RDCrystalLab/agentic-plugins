@@ -1,6 +1,6 @@
 # vault-assistant
 
-在任何 PARA 結構的 Obsidian vault 上跑完整 ceremony 的 Claude Code plugin。內建 `vault-assistant` subagent、13 個 slash command、3 個 skill，涵蓋日 / 週 / 月報、專案狀態、research-repo 巡檢、wiki 知識萃取與歸檔，並且每次寫入都自動 `git add` + `commit` + `push`（對齊 AGENTS.md 規則）。
+在任何 PARA 結構的 Obsidian vault 上跑完整 ceremony 的 Claude Code plugin。內建 `vault-assistant` subagent、14 個 slash command、4 個 skill，涵蓋日 / 週 / 月報、專案狀態、research-repo 巡檢、wiki 知識萃取與歸檔、以及 **GitHub Issues ↔ vault 雙向 Hub issue workflow**，每次寫入都自動 `git add` + `commit` + `push`（對齊 AGENTS.md 規則）。
 
 ## 目標使用者
 
@@ -12,16 +12,16 @@
 
 - **`vault-assistant`** — 知道 PARA 放置規則、Quartz-shortest wikilink 格式、每次寫入要 auto commit+push，會把多步 ceremony（morning briefing、end-of-day、weekly retrospective、monthly rollup）串起來跑。任何涉及 vault 的指令都建議改委派給它。
 
-### Slash commands（13）
+### Slash commands（14）
 
 | Command | 作用 |
 |---|---|
-| `/vault-assistant:install` | 初始化當前目錄為 PARA vault（建骨架、複製 templates、寫 `AGENTS.md`） |
-| `/vault-assistant:start-day` | 建立今日 daily note，產出 morning briefing |
+| `/vault-assistant:install` | 初始化當前目錄為 PARA vault（建骨架、複製 templates、寫 `AGENTS.md`、issue templates） |
+| `/vault-assistant:start-day` | 建立今日 daily note，產出 morning briefing（含 `label:now` issue 簡報） |
 | `/vault-assistant:end-day` | 收尾 daily note、reconcile checkbox、同步 Objectives 進度、auto commit+push |
 | `/vault-assistant:end-week` | Weekly retrospective — 彙整本週 daily 進 weekly 報 |
 | `/vault-assistant:end-month` | Monthly rollup、評估 Objectives、建立下月 skeleton |
-| `/vault-assistant:plan-weekly` | 規劃下週 weekly report（訪談式） |
+| `/vault-assistant:plan-weekly` | 規劃下週 weekly report（訪談式、含 issue re-label reminder） |
 | `/vault-assistant:sync-projects` | 從最新 weekly / monthly 反推同步 `Projects/index.md` |
 | `/vault-assistant:update-project-status` | 更新指定專案的狀態表與最後更新日 |
 | `/vault-assistant:add-project-note` | 在專案下新增研究筆記 |
@@ -30,6 +30,7 @@
 | `/vault-assistant:gh-daily-log` | 抓 GitHub 活動寫入 daily note 的 Logs |
 | `/vault-assistant:repo-patrol` | 巡檢 `Areas/development/research-repos/` 的 upstream 變化 |
 | `/vault-assistant:watch-repo` | 加 GitHub repo 進 research-repos monitoring list |
+| `/vault-assistant:capture-issue` | 從 vault 工作流開 GitHub issue，自動套 project/type/horizon 三軸 label |
 
 ### Skills（4）
 
@@ -97,6 +98,17 @@ claude --plugin-dir ~/workspaces/agentic-plugins/plugins/vault-assistant
 - **Git workflow**：任何 vault 寫入 → auto `git add` + `commit` + `push`，conventional commits
 - **Daily note**：`0-inbox/daily/YYYY-MM-DD.md`，由 `/start-day` 建立
 - **Reports**：Weekly `Areas/reports/Weekly/YYYY-Wnn.md`、Monthly `Areas/reports/Monthly/YYYY-MM.md`
+
+## Hub issue workflow
+
+Vault 以 GitHub Issues 為「執行單位」、vault notes 為「比 issue 活更久的知識」。
+
+- **Issue 放哪**：code-bearing 工作放該 code repo，meta/跨 repo 工作集中到 hub repo（就是 vault 本身的 repo，例如 `ricky1698/sb`）
+- **Label 三軸**：`project:<slug>` + `type:{task,bug,research,decision,idea}` + `{now,next,later}`——每個 issue 三軸齊全才算歸類好
+- **Issue ↔ vault note**：`task` / `bug` 不配 note，`research` / `decision` 配雙向連結的 vault note
+- **Flow**：`Capture`（`/capture-issue`）→ `Triage`（`/start-day` 會帶 `now` issue 簡報）→ `Work` → `Sync` → `Close` → `Report`（`/end-day` / `/end-week` / `/end-month` 自動回灌 issue 事件流到 vault）
+
+完整規則、label schema、anti-patterns 見 `templates/AGENTS.md.template` 的「Hub issue workflow」章節；`install` 時會連同 `.github/ISSUE_TEMPLATE/{decision,task,research}.md` 一起複製到 vault。
 
 ## License
 

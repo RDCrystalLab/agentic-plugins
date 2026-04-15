@@ -38,6 +38,7 @@ Resources/llm-wiki/wiki/
 Archives/projects/
 Templates/
 attachments/
+.github/ISSUE_TEMPLATE/
 ```
 
 ### Step 3: Copy templates from plugin
@@ -49,6 +50,13 @@ The plugin ships three templates and an `AGENTS.md` seed under `${CLAUDE_PLUGIN_
 - `${CLAUDE_PLUGIN_ROOT}/templates/Monthly Report Template.md` → `Templates/Monthly Report Template.md`
 - `${CLAUDE_PLUGIN_ROOT}/templates/tag-guide.md` → `Templates/tag-guide.md`
 - `${CLAUDE_PLUGIN_ROOT}/templates/AGENTS.md.template` → `AGENTS.md`
+
+Also copy the issue templates (for the Hub issue workflow):
+
+- `${CLAUDE_PLUGIN_ROOT}/templates/issue-templates/decision.md` → `.github/ISSUE_TEMPLATE/decision.md`
+- `${CLAUDE_PLUGIN_ROOT}/templates/issue-templates/task.md`     → `.github/ISSUE_TEMPLATE/task.md`
+- `${CLAUDE_PLUGIN_ROOT}/templates/issue-templates/research.md` → `.github/ISSUE_TEMPLATE/research.md`
+- `${CLAUDE_PLUGIN_ROOT}/templates/issue-templates/labels.md`   → `Templates/issue-templates/labels.md`  (reference doc for `gh label create` commands — not a GitHub issue template)
 
 ### Step 4: Seed `CLAUDE.md`
 
@@ -73,6 +81,7 @@ Tell the user (≤6 lines):
 - Next steps:
   1. `git init` + first commit if this is a new repo
   2. Run `/start-day` to create today's daily note
-  3. Invoke the `vault-assistant` subagent for project status, ceremony, or knowledge extraction
+  3. (Optional) Enable issues on the hub repo and bulk-create labels from `Templates/issue-templates/labels.md` — needed if you want the Hub issue workflow
+  4. Invoke the `vault-assistant` subagent for project status, ceremony, or knowledge extraction
 
 Do **not** auto-commit here — the user should review the skeleton first.

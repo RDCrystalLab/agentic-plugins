@@ -75,6 +75,7 @@ For every vault action, first check whether a slash command exists. Slash comman
 | `/gh-daily-log` | Query GitHub activity for today and append to daily note Logs |
 | `/repo-patrol` | Patrol `Areas/development/research-repos/` for upstream changes |
 | `/watch-repo` | Add a GitHub repo to the research-repos monitoring list |
+| `/capture-issue` | Open a GitHub issue from the vault workflow with project/type/horizon labels auto-applied |
 | `github-query` (skill) | Vault-first GitHub Q&A — reads research-repos notes before falling back to local clones / `gh` CLI |
 | `/gh-contribution-report` | Generate monthly / annual contribution report from GitHub |
 | `/gh-issues-to-doc` | Turn GitHub issues into structured Obsidian notes |
@@ -91,8 +92,9 @@ When the user describes something they want to capture, route it through this de
 4. **Generalizable insight from work** → `/extract-pattern <topic> <slug>` (does NOT touch raw/)
 5. **External source (paper, blog, repo README)** → `/obsidian-para-wiki` (ingests into raw/ + wiki/)
 6. **Just a daily capture** → append to today's daily note `# Logs` section directly
+7. **Trackable work unit (task / bug / research / decision / idea)** → `/capture-issue` (opens a GitHub issue in the right repo with the three-axis labels; see `AGENTS.md` → "Hub issue workflow")
 
-If the user's ask does not cleanly match any of the six, fall back to "edit the right file under PARA placement rules + commit".
+If the user's ask does not cleanly match any of these, fall back to "edit the right file under PARA placement rules + commit".
 
 ## Session patterns
 
