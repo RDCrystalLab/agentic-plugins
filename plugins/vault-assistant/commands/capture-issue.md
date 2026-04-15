@@ -17,12 +17,16 @@ description: 從 vault 工作流裡開一個 GitHub issue — 自動套 project/
 需要湊齊這些欄位。能從 `$ARGUMENTS` 推論的就直接推論，不夠再問用戶（一次問完，不要一題一題拷問）：
 
 1. **Title**（required）— 一行可執行的標題。Bug 用「Fix X」而非「X broken」，research 用「Investigate whether…」，decision 用「Decide: …」
-2. **Type**（required）— `task` / `bug` / `research` / `decision` / `idea`。推論規則：
-   - 含「修」「壞」「broken」「crash」→ `bug`
-   - 含「查」「研究」「比較」「investigate」→ `research`
-   - 含「決定」「選」「要不要」「decide」→ `decision`
-   - 含「想法」「也許」「未來」→ `idea`
+2. **Type**（required）— `epic` / `story` / `task` / `bug` / `research` / `decision` / `idea`。推論規則（由粗到細，先試粒度軸再試工作性質）：
+   - 含「epic」「大工程」「跨多週」「多階段」→ `epic`
+   - 含「story」「user story」「feature」「功能（作為交付成果）」→ `story`
+   - 含「修」「壞」「broken」「crash」「bug」→ `bug`
+   - 含「查」「研究」「比較」「investigate」「survey」→ `research`
+   - 含「決定」「選」「要不要」「decide」「choose」→ `decision`
+   - 含「想法」「也許」「未來」「maybe」→ `idea`
    - 其他可執行任務 → `task`
+
+   **粒度階層**：`epic` ⊃ `story` ⊃ `task`。若用戶在 `$ARGUMENTS` 明確提到 parent epic/story（例如「這是 #42 的子任務」），建議使用者開完 issue 後到 GitHub UI 把它設成 sub-issue。
 3. **Project**（required）— 對應 `Projects/<slug>/`。從 `$ARGUMENTS` 或最近 daily note 的 context 推論；歧義就列 Active projects 問用戶
 4. **Horizon**（required）— `now` / `next` / `later`。預設 `next`（除非用戶明講今天/這週要做）
 5. **Target repo**（required）— 決定 issue 開在哪：
