@@ -1,0 +1,262 @@
+# Agent 使用指南
+
+## Subagent 委派規則（優先）
+
+**Vault 相關操作一律透過 `vault-assistant` subagent 處理**，不要直接 `ls Projects/`、`Read index.md` 或手動拼 skill 鏈。
+
+### 必須委派的情境
+- 專案盤點與狀態查詢（「手上有哪些專案」、「status of project X」）
+- Ceremony：morning briefing、end-of-day、weekly retrospective、monthly rollup
+- 新增 / 更新 / 歸檔 vault 筆記（Projects / Areas / Resources / Archives）
+- 知識萃取（wiki ingest、extract pattern、gh-issues-to-doc）
+- 跨多個 skill 的工作流（start-day + pickup、end-day + sync 等）
+
+### 原因
+`vault-assistant` 內建完整 PARA skill 工具鏈與 ceremony 知識，直接呼叫能：
+1. 保持 main context 乾淨（避免大量檔案內容塞進對話）
+2. 確保 ceremony 步驟完整、不漏 git push
+3. 行為一致，不會因為 main agent 偷懶省略步驟而漂移
+
+### 例外（可走直接路徑）
+- User 明確要求「直接讀檔」或「只改一行」
+- 純程式碼任務（非 vault 檔案）
+- 單純路徑確認（`ls` 不讀內容）
+
+---
+
+## Git 工作流（重要）
+
+**任何寫入 vault 的操作完成後，必須自動 `git add` + `commit` + `push`。** 不用問 user，直接收尾。
+
+### 適用範圍
+所有會動到 vault 檔案的 local command、skill、daily prompt 與手動編輯，**全部都要**。例如：
+
+- `/gh-daily-log`、`/plan-weekly`
+- `new-project`、`gh-issues-to-doc`、`gh-contribution-report`、`obsidian-para-wiki` 等 skill
+- Morning briefing、End-of-day summary
+- 任何手動新增 / 修改 / 搬移 vault 內檔案的操作
+
+### 原因
+Vault 透過 Quartz 發佈成靜態網站，且在多台裝置間同步。沒 push = 沒生效，也會造成裝置間分叉。
+
+### Commit message 風格
+使用 conventional commits，依變更性質選 type：
+
+- `chore(daily): ...` — daily note 更新
+- `docs(weekly): ...` / `docs(monthly): ...` — 週報、月報
+- `feat(project): ...` — 新增專案或重大專案變更
+- `docs(wiki): ...` — llm-wiki ingest
+- `docs(<area>): ...` — Areas / Resources 文件
+
+### 其他注意事項
+- Pre-commit hook 失敗時修問題再重新 commit，**不要** 用 `--no-verify`
+- `git add` 盡量指名檔案，避免 `git add -A` 意外帶進敏感或暫存檔
+- Remote 是 `ricky1698/sb`，push 到 `main`
+
+---
+
+## Vault 結構（PARA）
+
+本 vault 採用 **PARA** 組織方式：
+
+```
+sb/
+├── 0-inbox/daily/         # 每日筆記（捕捉入口）
+├── Projects/              # P — 有明確目標的專案
+├── Areas/                 # A — 持續維護的責任領域
+│   ├── infrastructure/    #   AWS, K8s, Proxmox, Terraform, Networking
+│   ├── development/       #   AI tools, DevOps, Frameworks
+│   ├── security/          #   憑證管理
+│   └── reports/           #   Weekly, Monthly, Annual
+├── Resources/             # R — 參考資料與興趣主題
+│   ├── learning/          #   學習筆記、面試題
+│   ├── tools/             #   CLI tools, Benchmarking
+│   └── self-hosted/       #   自架服務
+├── Archives/              # A — 已完成或不再活躍
+│   ├── projects/          #   歸檔專案
+│   └── old-wiki/          #   舊 wiki
+├── Templates/             # 模板
+├── Excalidraw/            # 圖表
+└── attachments/           # 附件
+```
+
+### PARA 分類原則
+- **Projects**: 有截止日或明確的「完成」定義
+- **Areas**: 持續負責維護的領域（infra、dev、security、reports）
+- **Resources**: 未來可能用到的參考資料（learning、tools）
+- **Archives**: 已經結束或不再相關的內容
+
+### 新檔案放置規則
+- 新專案 → `Projects/<專案名稱>/`
+- 技術知識/維運 → `Areas/<對應子目錄>/`
+- 學習筆記/參考 → `Resources/<對應子目錄>/`
+- 完成的專案 → `Archives/projects/<專案名稱>/`
+
+---
+
+## Index.md 建立規則
+
+### 根目錄導航
+- **00-Index.md** - 全站主要導航中心，提供快速連結與完整資料夾結構概覽
+
+### 需要建立 index.md 的情況
+- **主要類別目錄** - 包含多個不同主題的子目錄 (如 Areas/infrastructure/, Projects/)
+- **複雜度高** - 超過 5-7 個重要子項目或需要分類導航
+- **重要技術領域** - 核心業務領域或經常使用的技術棧 (如 kubernetes/)
+
+### 不需要建立 index.md 的情況
+- **檔案數量少** - 少於 5 個檔案且主題單一
+- **單一主題** - 專注於特定專案或技術的目錄
+- **結構簡單** - 檔案關係明確，不需要額外導航
+
+### 決策原則
+**"按需創建，避免過度組織"** - 當目錄成為某技術領域的主要參考點時才建立 index.md。
+
+---
+
+## Wikilink 規則（Quartz 相容）
+
+本 vault 透過 Quartz 發佈為靜態網站，Quartz 使用 `shortest` link resolution。
+
+### 必須使用最短檔名格式
+- **正確**: `[[paperclip]]`
+- **錯誤**: `[[research-repos/paperclip]]`（Quartz 會解析為錯誤路徑）
+
+### 原因
+Quartz `shortest` 模式以檔名查找唯一匹配。帶路徑前綴的 wikilink 會被當成不同的路徑層級，導致產出的 URL 缺少中間目錄。
+
+### 何時可以用路徑前綴
+- 當不同目錄有同名檔案時（如 `Projects/README.md` vs `Archives/README.md`），用路徑前綴消歧義
+- 其他情況一律用最短檔名
+
+---
+
+## Obsidian 錨點最佳實踐
+
+### 錨點語法規則
+
+**Obsidian Wikilink**（推薦）:
+```markdown
+[[#K3d GPU 支援]]
+```
+
+**標準 Markdown 錨點**（含英文標題會失效，避免使用）:
+```markdown
+[K3d GPU 支援](#k3d-gpu-支援)
+```
+
+### 使用建議
+1. **文件內 TOC**: 統一使用 `[[#標題]]` 格式
+2. **標題命名**: 避免特殊字符，保持簡潔
+3. **建立後測試**: 確保錨點跳轉正常工作
+
+---
+
+## 工作流程
+
+### 日常筆記流程
+
+#### 每日筆記 (Daily Notes)
+- **命名格式**: `YYYY-MM-DD` (例: 2025-12-11)
+- **存放位置**: `0-inbox/daily/`
+- **模板來源**: `./Templates/Daily note Template.md`（補建 daily notes 時從此模板複製內容）
+
+#### 快速捕捉 (Quick Capture)
+1. 使用 Obsidian Quick Switcher (`Cmd/Ctrl + O`)
+2. 記錄時加上臨時標籤 `#inbox` 或 `#todo`
+3. 每週整理一次 inbox，將內容歸檔到正確位置
+
+### 專案追蹤方法
+
+#### 專案文件結構
+```
+Projects/
+├── [專案名稱]/
+│   ├── README.md          # 專案概述
+│   ├── Tasks.md           # 任務清單
+│   ├── Notes.md           # 會議記錄/筆記
+│   ├── Resources.md       # 相關資源連結
+│   └── Archive.md         # 已完成內容
+```
+
+#### 專案狀態標籤
+- **使用方式**: 組合 `#project/<專案名稱>` 與 `#status/<狀態>` 標籤來描述專案狀態。
+- **範例**:
+  - 進行中: `#project/aml #status/active`
+  - 規劃中: `#project/secureminions #status/planning`
+  - 已完成: `#project/mbo #status/completed`
+
+#### 任務管理
+```markdown
+- [ ] 待辦事項 #task
+- [>] 延後處理 #task/later
+- [!] 高優先級 #task/urgent
+- [x] 已完成 ✅ 2025-12-11
+```
+
+### 知識整理週期
+
+#### 每日整理 (5 分鐘)
+- 檢視今日筆記，補充遺漏內容
+- 將重要想法轉換為永久筆記
+- 更新任務狀態
+
+#### 每週回顧 (30 分鐘)
+- 清空 `#inbox` 標籤的筆記
+- 整理本週的 Daily Notes
+- 檢視專案進度，更新狀態
+- 識別需要深化的主題
+
+#### 每月回顧 (1-2 小時)
+- 檢視本月完成的專案和學習
+- 整理散落的筆記，建立主題連結
+- 更新 Index.md 和重要目錄
+- 歸檔不再活躍的專案
+
+### 文件歸檔規則
+
+#### 歸檔時機
+- 專案完成後 2 週
+- 連續 3 個月未更新的筆記
+- 已過時的技術文件 (保留歷史參考)
+
+#### 歸檔方式
+1. 使用 Obsidian CLI 搬檔案（自動更新 wikilink）:
+   ```bash
+   /Applications/Obsidian.app/Contents/MacOS/Obsidian move path="Projects/xxx/file.md" to="Archives/projects/xxx/file.md"
+   ```
+2. 在歸檔檔案開頭加上:
+   ```markdown
+   > [!NOTE] 歸檔
+   > 此文件於 YYYY-MM-DD 歸檔
+   > 原因: [完成/過時/合併至其他文件]
+   ```
+
+#### 不歸檔的內容
+- 持續參考的技術文件
+- 核心知識筆記
+- 重要專案記錄
+- 經常查詢的 Index 文件
+
+### 工作流程範例
+
+#### 學習新技術
+1. **初始捕捉**: 建立 `Resources/learning/技術名稱.md`，標註 `#learning`
+2. **累積筆記**: 每次學習後更新內容
+3. **實作驗證**: 建立相關專案或練習，並使用獨立專案標籤
+4. **知識整理**: 轉換為結構化文件，移除 `#learning` 標籤
+5. **建立索引**: 加入對應的技術領域 Index
+
+#### 問題排查記錄
+1. **建立問題筆記**: `YYYY-MM-DD-問題描述.md`
+2. **記錄過程**: 嘗試方案、錯誤訊息、參考連結
+3. **解決方案**: 標記最終解法，加上 `#status/solved`
+4. **提取知識**: 將通用解法整理到 Areas 技術文件
+5. **歸檔**: 將具體問題筆記移至 Archives
+
+#### 專案執行
+1. **啟動**: 建立 `Projects/<專案名稱>/` 目錄，加上 `#project/<名稱>` 與 `#status/active`
+2. **追蹤**: 每日更新 Tasks.md，重要決策記錄於 Notes.md
+3. **完成**: 撰寫總結於 README.md，標籤更新為 `#status/completed`
+4. **萃取**: 將可重用的知識整理為 Areas 或 Resources 獨立文件
+5. **歸檔**: 2 週後移至 `Archives/projects/`，標籤更新為 `#status/archived`

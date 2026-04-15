@@ -1,0 +1,22 @@
+{
+  "name": "vault-assistant",
+  "version": "0.1.0",
+  "description": "Subagent + slash commands for running a PARA-structured Obsidian vault end-to-end: daily/weekly/monthly ceremony, project status, research-repo patrol, wiki knowledge extraction, and archival — all auto-committed to git. Quartz-compatible wikilinks enforced.",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "para",
+    "vault",
+    "quartz",
+    "ceremony",
+    "daily-note",
+    "weekly-report",
+    "monthly-report",
+    "github",
+    "subagent"
+  ]
+}
