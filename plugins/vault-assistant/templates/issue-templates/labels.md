@@ -4,10 +4,10 @@ Hub issue workflow 用到的固定 label。新增 project 時會同時多一個 
 
 ## Project — `project:<slug>`
 
-每個 active `Projects/<slug>/` 對應一個同名 label。顏色統一綠色 `#0E8A16`。
+每個 active project slug 對應一個同名 label。slug 通常對應 `Projects/<slug>/`，但也可以來自 vault 內 `Projects/project-repos.md` 的 routing table。顏色統一綠色 `#0E8A16`。
 
 ```bash
-gh label create "project:<slug>" --color "0E8A16" --description "Work belonging to Projects/<slug>"
+gh label create "project:<slug>" --color "0E8A16" --description "Work belonging to project <slug>"
 ```
 
 ## Type — 工作性質 / 粒度

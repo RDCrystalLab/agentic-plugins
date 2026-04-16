@@ -6,6 +6,7 @@ description: 從 vault 工作流裡開一個 GitHub issue — 自動套 project/
 ## Context
 
 - Active projects: !`ls -d Projects/*/ 2>/dev/null | sed 's|Projects/||;s|/||'`
+- Project routing table: `Projects/project-repos.md`（authoritative for issue routing; vault-local and user-maintained）
 - Hub repo（從 git remote 推論）: !`git remote get-url origin 2>/dev/null | sed -E 's|.*[/:]([^/]+/[^/.]+)(\.git)?$|\1|' || echo "(not in a git repo)"`
 
 ## Your task
@@ -27,13 +28,15 @@ description: 從 vault 工作流裡開一個 GitHub issue — 自動套 project/
    - 其他可執行任務 → `task`
 
    **粒度階層**：`epic` ⊃ `story` ⊃ `task`。若用戶在 `$ARGUMENTS` 明確提到 parent epic/story（例如「這是 #42 的子任務」），建議使用者開完 issue 後到 GitHub UI 把它設成 sub-issue。
-3. **Project**（required）— 對應 `Projects/<slug>/`。從 `$ARGUMENTS` 或最近 daily note 的 context 推論；歧義就列 Active projects 問用戶
+3. **Project**（required）— 優先對照 `Projects/project-repos.md` 的 `project_slug` / `aliases`；只有 routing table 沒列到時，才 fallback 到 `Projects/<slug>/`。從 `$ARGUMENTS` 或最近 daily note 的 context 推論；歧義就列 routing table + Active projects 問用戶
 4. **Horizon**（required）— `now` / `next` / `later`。預設 `next`（除非用戶明講今天/這週要做）
 5. **Target repo**（required）— 決定 issue 開在哪：
-   - 若 Title 或 description 提到具體 code repo（e.g. "in agentic-plugins"、"CA-expl"），用該 repo
-   - 若 project 本身就是 code repo 名稱，優先用該 repo
-   - 否則一律 fallback 到 **hub repo**（`$hub_repo` — 從 `git remote get-url origin` 推論；若當前目錄是 sb vault 本身，hub 就是它）
+   - **先讀 `Projects/project-repos.md`**：若該 project 在表內有 `default_repo`，預設用它；若 title/body 命中該列的 `override_keywords`，改用 `override_repo`
+   - 若 Title 或 description 明確指定另一個 code repo（e.g. "in agentic-plugins"、"CA-expl"）且和 routing table 衝突，先跟用戶確認，不要自行覆蓋
+   - 若 routing table 沒列到這個 project，再用 heuristic：Title/description 提到具體 code repo → 用該 repo；project 本身就是 code repo 名稱 → 用該 repo
+   - 上述都沒有時，fallback 到 **hub repo**（`$hub_repo` — 從 `git remote get-url origin` 推論；若當前目錄是 sb vault 本身，hub 就是它）
    - Edge case：若當前不在任何 git repo，要求用戶明確指定 `--repo <owner>/<repo>`
+   - 若 routing table 缺這個 project，但這看起來是 recurring code repo work，提醒用戶事後把 mapping 補進 `Projects/project-repos.md`
 6. **Body**（optional）— 若是 `decision` 或 `research`，套用對應 template 骨架；其他 type 用用戶給的文字或留空
 
 ### Step 2: 確認
@@ -103,6 +106,11 @@ Tell the user（≤ 5 lines）:
 /vault-assistant:capture-issue agentic-plugins: 決定要不要引入 gh Projects v2
 ```
 → Parsed: type=decision, project=agentic-plugins, horizon=next (default), repo=agentic-plugins (from project name match)
+
+```
+/vault-assistant:capture-issue deploy-box: 最後驗證 PowerFlex CSI 場景與收斂 pre-execution checklist
+```
+→ Parsed: type=task, project=deploy-box, horizon=next (default), repo=`ricky1698/deploy-box` (from vault routing table)
 
 ```
 /vault-assistant:capture-issue 修 start-day 沒抓到 `now` issue 的 bug

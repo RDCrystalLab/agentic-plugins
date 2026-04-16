@@ -30,7 +30,7 @@
 | `/vault-assistant:gh-daily-log` | 抓 GitHub 活動寫入 daily note 的 Logs |
 | `/vault-assistant:repo-patrol` | 巡檢 `Areas/development/research-repos/` 的 upstream 變化 |
 | `/vault-assistant:watch-repo` | 加 GitHub repo 進 research-repos monitoring list |
-| `/vault-assistant:capture-issue` | 從 vault 工作流開 GitHub issue，自動套 project/type/horizon 三軸 label |
+| `/vault-assistant:capture-issue` | 從 vault 工作流開 GitHub issue，自動套 project/type/horizon 三軸 label，並優先依 vault 內的 project routing table 選 repo |
 
 ### Skills（4）
 
@@ -104,11 +104,12 @@ claude --plugin-dir ~/workspaces/agentic-plugins/plugins/vault-assistant
 Vault 以 GitHub Issues 為「執行單位」、vault notes 為「比 issue 活更久的知識」。
 
 - **Issue 放哪**：code-bearing 工作放該 code repo，meta/跨 repo 工作集中到 hub repo（就是 vault 本身的 repo，例如 `ricky1698/sb`）
+- **Repo routing**：`/capture-issue` 會先讀 vault 內 `Projects/project-repos.md` 的 project→repo mapping；只有沒配到時才退回 repo 名稱 heuristic / hub fallback
 - **Label 三軸**：`project:<slug>` + `type:{task,bug,research,decision,idea}` + `{now,next,later}`——每個 issue 三軸齊全才算歸類好
 - **Issue ↔ vault note**：`task` / `bug` 不配 note，`research` / `decision` 配雙向連結的 vault note
 - **Flow**：`Capture`（`/capture-issue`）→ `Triage`（`/start-day` 會帶 `now` issue 簡報）→ `Work` → `Sync` → `Close` → `Report`（`/end-day` / `/end-week` / `/end-month` 自動回灌 issue 事件流到 vault）
 
-完整規則、label schema、anti-patterns 見 `templates/AGENTS.md.template` 的「Hub issue workflow」章節；`install` 時會連同 `.github/ISSUE_TEMPLATE/{decision,task,research}.md` 一起複製到 vault。
+完整規則、label schema、anti-patterns 見 `templates/AGENTS.md.template` 的「Hub issue workflow」章節；`install` 時會連同 `.github/ISSUE_TEMPLATE/{decision,task,research}.md` 與 `Projects/project-repos.md` seed 一起複製到 vault。
 
 ## License
 

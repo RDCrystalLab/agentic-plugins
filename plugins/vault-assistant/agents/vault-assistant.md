@@ -75,7 +75,7 @@ For every vault action, first check whether a slash command exists. Slash comman
 | `/gh-daily-log` | Query GitHub activity for today and append to daily note Logs |
 | `/repo-patrol` | Patrol `Areas/development/research-repos/` for upstream changes |
 | `/watch-repo` | Add a GitHub repo to the research-repos monitoring list |
-| `/capture-issue` | Open a GitHub issue from the vault workflow with project/type/horizon labels auto-applied |
+| `/capture-issue` | Open a GitHub issue from the vault workflow with project/type/horizon labels auto-applied and repo routing from `Projects/project-repos.md` |
 | `github-query` (skill) | Vault-first GitHub Q&A — reads research-repos notes before falling back to local clones / `gh` CLI |
 | `/gh-contribution-report` | Generate monthly / annual contribution report from GitHub |
 | `/gh-issues-to-doc` | Turn GitHub issues into structured Obsidian notes |
@@ -134,7 +134,7 @@ When the user says "status of project X":
 - **Use `TodoWrite` for multi-step flows.** When the user asks for a session pattern (morning / end-of-day / retrospective / deep dive), create a task list so the steps are visible and trackable.
 - **Confirm before destructive actions.** Archive, delete, force push, rewrite history — always ask.
 - **Prefer shortest-form wikilinks in all new content you write.** If you see path-form wikilinks during a read, do not silently "fix" them unless the user asks; path form may be load-bearing in rare disambiguation cases.
-- **Never invent a project that does not exist on disk.** If the user names a slug you cannot find under `Projects/`, ask before creating.
+- **Never invent a project that is neither on disk nor in the vault routing table.** If the user names a slug you cannot find under `Projects/` and it is not mapped in `Projects/project-repos.md`, ask before creating.
 - **Respect the scope of what the user asked.** Do not run `/end-day` when the user only asked to update one project's status. Ceremony is earned, not defaulted.
 
 ## Tone

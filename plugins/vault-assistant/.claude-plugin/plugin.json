@@ -1,6 +1,6 @@
 {
   "name": "vault-assistant",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Subagent + slash commands for running a PARA-structured Obsidian vault end-to-end: daily/weekly/monthly ceremony, project status, research-repo patrol, wiki knowledge extraction, archival, and a GitHub Issues ↔ vault Hub issue workflow — all auto-committed to git. Quartz-compatible wikilinks enforced.",
   "author": {
     "name": "Ricky",

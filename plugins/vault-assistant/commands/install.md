@@ -50,6 +50,7 @@ The plugin ships three templates and an `AGENTS.md` seed under `${CLAUDE_PLUGIN_
 - `${CLAUDE_PLUGIN_ROOT}/templates/Monthly Report Template.md` → `Templates/Monthly Report Template.md`
 - `${CLAUDE_PLUGIN_ROOT}/templates/tag-guide.md` → `Templates/tag-guide.md`
 - `${CLAUDE_PLUGIN_ROOT}/templates/AGENTS.md.template` → `AGENTS.md`
+- `${CLAUDE_PLUGIN_ROOT}/templates/project-repos.md` → `Projects/project-repos.md`
 
 Also copy the issue templates (for the Hub issue workflow):
 
@@ -82,6 +83,7 @@ Tell the user (≤6 lines):
   1. `git init` + first commit if this is a new repo
   2. Run `/start-day` to create today's daily note
   3. (Optional) Enable issues on the hub repo and bulk-create labels from `Templates/issue-templates/labels.md` — needed if you want the Hub issue workflow
-  4. Invoke the `vault-assistant` subagent for project status, ceremony, or knowledge extraction
+  4. Review `Projects/project-repos.md` and update the project→repo mapping before using `/capture-issue`
+  5. Invoke the `vault-assistant` subagent for project status, ceremony, or knowledge extraction
 
 Do **not** auto-commit here — the user should review the skeleton first.
