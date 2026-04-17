@@ -11,7 +11,7 @@
     {
       "name": "vault-assistant",
       "description": "在 PARA 結構的 Obsidian vault 上跑完整 ceremony 的 subagent + 14 slash commands + 4 skills：日 / 週 / 月報、專案狀態、research-repo 巡檢、wiki 知識萃取、歸檔、GitHub Issues ↔ vault Hub issue workflow，全部 auto commit+push。內建 /install 一鍵初始化 vault 骨架。",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "Ricky",
         "email": "moiamond@gmail.com"

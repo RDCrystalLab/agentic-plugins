@@ -2,7 +2,7 @@
 name: gh-contribution-report
 description: 從 GitHub 組織抓取 commits 與 PRs，生成詳細月報與年報至 Obsidian vault。觸發關鍵詞：「貢獻報告」、「contribution report」、「年報」、「月報產出」、「GitHub 貢獻」。
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # GitHub Contribution Report Generator
@@ -37,9 +37,9 @@ User provides:
 ## Configuration
 
 - **GitHub username**: `ricky1698` (from CLAUDE.md)
-- **Reports directory**: `Reports/`
-  - Monthly: `Reports/Monthly/YYYY-MM.md`
-  - Annual: `Reports/Annual/YYYY.md`
+- **Reports directory**: `Areas/reports/`
+  - Monthly: `Areas/reports/Monthly/YYYY-MM.md`
+  - Annual: `Areas/reports/Annual/YYYY.md`
 - **Monthly report template**: `./Templates/Monthly Report Template.md` (if exists)
 
 ## Workflow
@@ -107,7 +107,7 @@ User provides:
 
 ### Phase 3: Monthly Report Generation
 
-For each month with activity, generate or update `Reports/Monthly/YYYY-MM.md`.
+For each month with activity, generate or update `Areas/reports/Monthly/YYYY-MM.md`.
 
 #### New Monthly Report Structure
 
@@ -199,7 +199,7 @@ When a monthly report already exists (e.g., contains Crypto Analysis Objectives 
 
 ### Phase 4: Annual Report Generation
 
-Generate `Reports/Annual/YYYY.md` as a high-level summary.
+Generate `Areas/reports/Annual/YYYY.md` as a high-level summary.
 
 #### Annual Report Structure
 
@@ -253,7 +253,7 @@ Generate `Reports/Annual/YYYY.md` as a high-level summary.
 
 | Month | Focus | Commits | PRs |
 |-------|-------|---------|-----|
-| [[Reports/Monthly/YYYY-01\|01]] | summary | N | N |
+| [[YYYY-01\|01]] | summary | N | N |
 ...
 
 ---
@@ -281,7 +281,7 @@ After generating all reports:
 1. **List all created/updated files** with summary
 2. **Verify monthly report count** matches months with activity
 3. **Cross-check totals**: sum of monthly commits should ≈ annual total
-4. **Check for wikilink consistency**: all `[[Reports/Monthly/...]]` links should point to existing files
+4. **Check for wikilink consistency**: all monthly report wikilinks use shortest form (e.g. `[[YYYY-MM\|MM]]`) and point to existing files
 
 ## Important Notes
 
@@ -308,10 +308,10 @@ After generating all reports:
 
 ### Obsidian Compatibility
 
-- Use `[[Reports/Monthly/YYYY-MM\|MM]]` for wikilinks with display text in tables
+- Use `[[YYYY-MM\|MM]]` for wikilinks with display text in tables (Quartz shortest form; no path prefix)
 - Use `> [!info]`, `> [!important]`, `> [!note]` for callouts
 - Tags: `#project/<name>`, `#status/<state>`
-- Keep all reports in `Reports/` directory hierarchy
+- Keep all reports in `Areas/reports/` directory hierarchy
 
 ### Idempotency
 
