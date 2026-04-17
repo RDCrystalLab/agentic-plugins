@@ -196,6 +196,17 @@
       "category": "productivity"
     },
     {
+      "name": "patch-based-engineering",
+      "description": "Patch-Based Engineering workflow — 將 patch / commit range 轉成可重建 spec，支援 spec-first reapply、specs/patches.md 與 specs/patched.md 分離，以及 clean-baseline spec-only validation。觸發詞：把這個 patch 變成 spec、重建這個客製化、驗證 patches.md 能不能獨立重做。",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ricky",
+        "email": "moiamond@gmail.com"
+      },
+      "source": "./plugins/patch-based-engineering",
+      "category": "development"
+    },
+    {
       "name": "skill-scout",
       "description": "從外部 repo 發現、評估、移植 skills 到插件市集。支援瀏覽、討論篩選、合併相關 skills、雙格式 plugin.json 產出。觸發詞：讀這個 repo、看一下 ~/workspaces、瀏覽 skills、移植這個 skill、把這個 porting 過來、評估這個 repo、從 GitHub 匯入 skill；read this repo, browse skills, port this skill, add this skill.",
       "version": "1.0.0",

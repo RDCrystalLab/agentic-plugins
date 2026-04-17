@@ -1,0 +1,20 @@
+{
+  "name": "patch-based-engineering",
+  "version": "1.0.0",
+  "description": "Patch-Based Engineering workflow — 將 patch / commit range 轉成可重建 spec，支援 spec-first reapply 與 clean-baseline validation。觸發詞：把這個 patch 變成 spec、重建這個客製化、從 commit range 抽出需求、驗證 patches.md 能不能獨立重做；extract patch intent, reapply from spec, validate patch spec.",
+  "author": {
+    "name": "Ricky",
+    "email": "moiamond@gmail.com"
+  },
+  "repository": "https://github.com/RDCrystalLab/agentic-plugins",
+  "license": "MIT",
+  "keywords": [
+    "patch",
+    "spec",
+    "reapply",
+    "downstream",
+    "upstream",
+    "worktree",
+    "reconstruction"
+  ]
+}
