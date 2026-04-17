@@ -25,6 +25,7 @@ This is a Claude Code plugins marketplace containing multiple plugins, each in i
 | cli-creator | development | skills |
 | marimo | development | skills |
 | prd | productivity | skills |
+| patch-based-engineering | development | skills, commands, agents |
 | skill-scout | productivity | skills |
 | debug-hypothesis | development | skills |
 
